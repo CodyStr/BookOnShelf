@@ -1,0 +1,254 @@
+body, html{
+	min-height: 100%;
+}
+
+body {
+	background-image:url(images/background2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	font-family:sans-serif;
+	margin: 30px 0px 0px 0px;
+}
+
+#banner_img{
+	width: 700px;
+	height: 250px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	background: white;
+	padding: 5px;
+	border-radius: 10px;
+	background: red;
+}
+
+#banner_img img{
+	width: 100%;
+	height: 100%;
+}
+
+#main-wrapper {
+	width: 500px;
+	margin: 0 auto;
+	padding: 5px;
+	border-radius: 10px;
+	background: rgba(0,0,0,0.3);
+}
+
+#banner {
+	background: rgba(0,0,0,0.3);
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+	top: 0px;
+	display: inline-block;
+}
+
+.myform {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.form_logout {
+	margin: 0 auto;
+}
+
+#banner .myform {
+	width: auto;
+}
+
+#banner li {
+	display: inline-block;
+	padding-left: 30px;
+}
+
+#banner h1 {
+	float: left;
+	margin-left: 20px;
+}
+
+#menu {
+	float: right;
+	margin-right: 30px;
+}
+
+#UsersTable {
+	margin-top: 100px;
+	background-color: white;
+	color: black;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    background-color: transparent;
+    color: white;
+}
+
+input[type=text], input[type=password], input[type=email]:focus {
+	outline: none;
+}
+
+.field {
+	width: 84%;
+	height: 40px;
+	border: 1px solid white;
+	padding: 6px 6px 0px 50px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	font-size: 15px;
+	margin-bottom: 5%;
+	z-index: 1;
+}
+
+.username {
+	background: url(images/user-32.png) no-repeat #fff 8px 5px;
+	z-index: 100;
+}
+
+.password {
+	background: url(images/key-32.png) no-repeat #fff 8px 8px;
+}
+
+.email {
+	background: url(images/mail-32.png) no-repeat #fff 5px 5px;
+}
+
+#login_btn	{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 28%;
+	background-color: transparent;
+	padding: 5px;
+	color: white;
+	width: 40%;
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+#login_btn:hover{
+	background-color: rgba(0,0,0,0.3);
+	transition-duration: 1.5s; 
+	cursor: pointer;
+}
+
+#register_link {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	background: transparent;
+	padding: 5px;
+	color: white;
+	width: 40%;
+	text-align: center;
+	font-size: 18px;
+	border: none;
+	text-decoration: none;
+}
+
+#register_link:hover{
+	text-decoration: underline;
+}
+
+#signup_btn	{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 18%;
+	background-color: transparent;
+	padding: 5px;
+	color: white;
+	width: 40%;
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid white;
+	border-radius: 5px;	
+}
+
+#signup_btn:hover{
+	background-color: rgba(0,0,0,0.3);
+	transition-duration: 1.5s; 
+	cursor: pointer;
+}
+
+#back_btn	{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 0%;
+	background-color: transparent;
+	padding: 5px;
+	color: white;
+	width: 40%;
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid white;
+	border-radius: 5px;	
+}
+
+#back_btn:hover{
+	background-color: rgba(0,0,0,0.3);
+	transition-duration: 1.5s; 
+	cursor: pointer;
+}
+
+#logout_btn	{
+	background-color: transparent;
+	padding: 5px;
+	color: white;
+	width: 20%;
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid white;
+	border-radius: 5px;
+	width: 100px;
+}
+
+#logout_btn:hover {
+	background-color: rgba(0,0,0,0.3);
+	transition-duration: 1.5s; 
+	cursor: pointer;
+}
+
+#main-wrapper #errormsg {
+	border: 2px solid red;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+}
+
+#goodmsg {
+	border: 2px solid white;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+}
+
+.black_overlay {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+.white_content {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  padding: 16px;
+  border: 5px solid green;
+  color: black;
+  background-image:url(images/background2.jpg);
+  background-repeat: no-repeat;
+  color: white;
+  z-index: 1002;
+  overflow: auto;
+}
