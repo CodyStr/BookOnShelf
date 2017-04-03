@@ -30,7 +30,7 @@
 					$username = $_POST['username'];
 					$password = $_POST['password'];
 
-					$query= $conn->prepare("SELECT username, isadmin FROM users WHERE username =:username AND password =:password");
+					$query= $conn->prepare("SELECT username, isadmin FROM Members WHERE username =:username AND password =:password");
 					$query->bindValue('username', $username);
 					$query->bindValue('password', $password);
 					$query->execute();

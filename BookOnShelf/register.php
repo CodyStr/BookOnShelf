@@ -38,11 +38,11 @@
 				
 				if($password==$cpassword)
 				{
-					$query= $conn->prepare("SELECT username FROM users WHERE username =:username");
+					$query= $conn->prepare("SELECT username FROM Members WHERE username =:username");
 					$query->bindValue('username', $username);
 					$query->execute();
 					
-					$query2= $conn->prepare("SELECT email FROM users WHERE email =:email");
+					$query2= $conn->prepare("SELECT email FROM Members WHERE email =:email");
 					$query2->bindValue('email', $email);
 					$query2->execute();
 					
@@ -54,15 +54,15 @@
 							}
 							else {
 						if(isset($_POST["submit_btn"])){
-						$hostname='localhost';
-						$username='root';
-						$password='';
+						$hostname='95.170.86.104';
+						$username='codymax_root';
+						$password='Qwerty6';
 
 						try {
-						$dbh = new PDO("mysql:host=$hostname;dbname=BookOnShelf",$username,$password);
+						$dbh = new PDO("mysql:host=$hostname;dbname=codymax_bos",$username,$password);
 
 						$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$sql = "INSERT INTO users (UserName, FirstName, LastName, Email, Password)
+						$sql = "INSERT INTO Members (Username, Firstname, Lastname, Email, Password)
 						VALUES ('".$_POST["username"]."','".$_POST["firstname"]."','".$_POST["lastname"]."','".$_POST["email"]."','".$_POST["password"]."')";
 						if ($dbh->query($sql)) {
 						echo '<div id="goodmsg">U ben succesvol geregistreed, u kunt nu inloggen.</div>';

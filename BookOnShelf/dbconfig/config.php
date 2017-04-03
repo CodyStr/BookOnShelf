@@ -1,9 +1,9 @@
 <?php
 
-const HOST = 'localhost';
-define('USER', 'root');
-define('PASSWORD', '');
-define('DATABASE', 'BookOnShelf');
+define('HOST', '95.170.86.104');
+define('USER', 'codymax_root');
+define('PASSWORD', 'Qwerty6');
+define('DATABASE', 'codymax_bos');
 $conn = DB();
 function DB()
 {

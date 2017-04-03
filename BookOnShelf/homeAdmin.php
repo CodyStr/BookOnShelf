@@ -25,7 +25,7 @@
 	</div>
 	<div id="UsersTable">
 		<?php
-			$query = "SELECT * FROM users";
+			$query = "SELECT * FROM Members";
 			$sth = $conn->query($query);
 			if($sth->rowCount() > 0){
 				$data = $sth->fetchAll();
@@ -41,10 +41,10 @@
 				foreach($data as $row)
 				{
 					echo '<tr>
-							<td>'.$row["UserID"].'</td>
-							<td>'.$row["UserName"].'</td>
-							<td>'.$row["FirstName"].'</td>
-							<td>'.$row["LastName"].'</td>
+							<td>'.$row["MemberID"].'</td>
+							<td>'.$row["Username"].'</td>
+							<td>'.$row["Firstname"].'</td>
+							<td>'.$row["Lastname"].'</td>
 						</tr>';
 				}
 
