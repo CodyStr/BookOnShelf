@@ -73,12 +73,6 @@ body {
 	margin-right: 30px;
 }
 
-#UsersTable {
-	margin-top: 100px;
-	background-color: white;
-	color: black;
-}
-
 input[type=text], input[type=password], input[type=email] {
     background-color: transparent;
     color: white;
@@ -251,4 +245,59 @@ input[type=text], input[type=password], input[type=email]:focus {
   color: white;
   z-index: 1002;
   overflow: auto;
+}
+
+#UsersTable {
+	padding: 5px;
+}
+
+#admin-main-content-members table {
+    font-family: arial;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#UsersTable td, th {
+	border: 1px solid;
+    text-align: left;
+    padding: 30px;
+}
+
+#admin-main-content-members th {
+	background-color: rgba(0,0,0,0.3);
+	border: 1px solid;
+}
+
+#admin-main-content-members {
+	margin-top: 100px;
+	float: right;
+	width: 70%;
+	background: blue;
+	margin-right: 50px;
+}
+
+.username2 {
+	background: url(images/user-32.png) no-repeat #fff 8px;
+	z-index: 100;
+}
+
+.password2 {
+	background: url(images/key-32.png) no-repeat #fff 8px 8px;
+}
+
+.email2 {
+	background: url(images/mail-32.png) no-repeat #fff 8px;
+}
+
+.field2 {
+	width: 84%;
+	height: 40px;
+	border: 1px solid white;
+	padding: 6px 6px 0px 50px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	font-size: 15px;
+	margin-bottom: 5%;
+	z-index: 1;
 }

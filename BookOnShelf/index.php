@@ -11,7 +11,7 @@
 	  
 </head>
 
-<body id="login_page" style="background-color: #7f8c8d">
+<body id="login_page" style="background-color: #7f8c8=">
 
 	<div id="banner_img">
 		<img src="images/banner.jpg">
