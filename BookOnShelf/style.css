@@ -217,6 +217,37 @@ input[type=text], input[type=password], input[type=email]:focus {
 	padding: 10px;
 }
 
+#sideMenu {
+	background-color: red;
+	margin-top: 100px;
+	margin-left: 10%;
+	float: left;
+	padding: 10px;
+	width: 10%;
+	background: rgba(0,0,0,0.3);
+	text-align: center;
+	border-radius: 10px;
+}
+
+#sideMenu h3{
+	border-bottom: 1px solid white;
+}
+
+#sideMenu a {
+    color: white;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+	border: 1px solid white;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+#sideMenu a:hover {
+	background-color: rgba(0,0,0,0.3);
+    transition-duration: 0.5s; 
+}
+
 .black_overlay {
   display: none;
   position: absolute;
@@ -248,19 +279,19 @@ input[type=text], input[type=password], input[type=email]:focus {
 }
 
 #UsersTable {
-	padding: 5px;
+	padding: 1px;
 }
 
 #admin-main-content-members table {
     font-family: arial;
     border-collapse: collapse;
-    width: 70%;
+    width: 100%;
 }
 
 #UsersTable td, th {
 	border: 1px solid;
     text-align: left;
-    padding: 30px;
+    padding: 20px;
 }
 
 #admin-main-content-members th {
@@ -271,9 +302,11 @@ input[type=text], input[type=password], input[type=email]:focus {
 #admin-main-content-members {
 	margin-top: 100px;
 	float: right;
-	width: 70%;
-	background: blue;
-	margin-right: 50px;
+	width: 50%;
+	background: rgba(0,0,0,0.3);
+	margin-right: 20%;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 .username2 {
@@ -300,4 +333,9 @@ input[type=text], input[type=password], input[type=email]:focus {
 	font-size: 15px;
 	margin-bottom: 5%;
 	z-index: 1;
+}
+
+#copyright{ 
+	text-align: center;
+	border-top: 1px solid white;
 }

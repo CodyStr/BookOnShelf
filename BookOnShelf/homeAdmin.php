@@ -23,6 +23,13 @@
 			</ul>
 		</div>
 	</div>
+	<div id="sideMenu">
+		
+		<h3>Menu</h3>
+		<a href="#">Gebruikers</a>
+		<a href="#">Boeken</a>
+		
+	</div>
 	<div id="admin-main-content-members">
 		<div id="UsersTable">
 			<?php
@@ -70,6 +77,9 @@
 					<div id="fade" class="black_overlay">
 					</div>
 				<p>Een random stsukje tekst :D</p>
+			<div id="copyright">
+				<p>&copy; ScanYours-Arnhem</p>
+			</div>
 	</div>
 	<?php
 		if(isset($_POST['logout_btn']))
@@ -78,7 +88,6 @@
 			header('Location: index.php');
 		}
 	?>
-	
 </body>
 </html>
 
