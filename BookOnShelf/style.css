@@ -335,6 +335,37 @@ input[type=text], input[type=password], input[type=email]:focus {
 	z-index: 1;
 }
 
+#admin-main-content-home {
+	margin-top: 100px;
+	float: right;
+	width: 50%;
+	background: rgba(0,0,0,0.3);
+	margin-right: 20%;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+#admin-main-content-books {
+	margin-top: 100px;
+	float: right;
+	width: 50%;
+	background: rgba(0,0,0,0.3);
+	margin-right: 20%;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#admin-main-content-books th {
+	background-color: rgba(0,0,0,0.3);
+	border: 1px solid;
+}
+
+#admin-main-content-books table {
+    font-family: arial;
+    border-collapse: collapse;
+	width: 100%;
+}
 #copyright{ 
 	text-align: center;
 	border-top: 1px solid white;
