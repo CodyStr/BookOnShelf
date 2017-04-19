@@ -45,6 +45,10 @@ body {
 	display: inline-block;
 }
 
+::-webkit-input-placeholder {
+  color: lightgrey;
+}
+
 .myform {
 	width: 75%;
 	margin: 0 auto;
@@ -203,6 +207,48 @@ input[type=text], input[type=password], input[type=email]:focus {
 	cursor: pointer;
 }
 
+#close_btn	{
+	background-color: transparent;
+	padding: 5px;
+	color: white;
+	margin-top: 5%;		
+	width: 20%;
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid white;
+	border-radius: 5px;
+	width: 100px;
+	text-decoration: none;
+	float: left;
+}
+
+#close_btn:hover {
+	background-color: rgba(0,0,0,0.3);
+	transition-duration: 1.5s; 
+	cursor: pointer;
+}
+
+#add_btn	{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 18%;
+	background-color: transparent;
+	padding: 5px;
+	color: white;
+	width: 40%;
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid white;
+	border-radius: 5px;	
+	float: right;
+}
+
+#add_btn:hover{
+	background-color: rgba(0,0,0,0.3);
+	transition-duration: 1.5s; 
+	cursor: pointer;
+}
+
 #main-wrapper #errormsg {
 	border: 2px solid red;
 	border-radius: 10px;
@@ -309,6 +355,11 @@ input[type=text], input[type=password], input[type=email]:focus {
 	border-radius: 10px;
 }
 
+.myform2 {
+	width: 40%;
+	margin: 0 auto;
+}
+
 .username2 {
 	background: url(images/user-32.png) no-repeat #fff 8px;
 	z-index: 100;
@@ -323,7 +374,6 @@ input[type=text], input[type=password], input[type=email]:focus {
 }
 
 .field2 {
-	width: 84%;
 	height: 40px;
 	border: 1px solid white;
 	padding: 6px 6px 0px 50px;
@@ -332,7 +382,6 @@ input[type=text], input[type=password], input[type=email]:focus {
 	border-right: none;
 	font-size: 15px;
 	margin-bottom: 5%;
-	z-index: 1;
 }
 
 #admin-main-content-home {

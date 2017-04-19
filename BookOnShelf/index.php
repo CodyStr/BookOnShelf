@@ -43,12 +43,12 @@
 						{
 							$_SESSION['username'] = $username;
 							$_SESSION['login'] = true;
-							header('location:homeAdmin.php');
+							header('Location: homeAdmin.php?page=Home');
 						}
 						else{
 							$_SESSION['username'] = $username;
 							$_SESSION['login'] = true;
-							header('location:home.php');
+							header('Location: home.php?page=Home');
 						}
 					}
 					else{

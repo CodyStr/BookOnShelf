@@ -34,16 +34,18 @@
 
 			?>
 		</div>
-			<p>Gebruiker toevoegen klik <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">hier.</a>
-			</p>
-				<div id="light" class="white_content">
-					<p>Gebruiker toevoegen</p> 
+		<p>Gebruiker toevoegen klik
+			<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">hier.</a>
+		</p>
+		<div id="light" class="white_content">
+			<p>Gebruiker toevoegen</p> 
 
-					<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Sluit.</a>
-				</div>
-					<div id="fade" class="black_overlay">
-					</div>
-			<div id="copyright">
-				<p>&copy; ScanYours-Arnhem</p>
-			</div>
+			<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Sluit.</a>
+		</div>
+		<div id="fade" class="black_overlay">
+			
+		</div>
+		<div id="copyright">
+			<p>&copy; ScanYours-Arnhem</p>
+		</div>
 	</div>

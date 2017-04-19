@@ -1,5 +1,64 @@
 	<div id="admin-main-content-members">
 		<h1>Gebruikers</h1>
+				<?php
+			if(isset($_POST['add_btn']))
+			{	
+				$username = $_POST['username'];
+				$firstname = $_POST['firstname'];
+				$lastname = $_POST['lastname'];
+				$email = $_POST['email'];
+				$password = $_POST['password'];
+				$cpassword = $_POST['cpassword'];
+				
+				if($password==$cpassword)
+				{
+					$query= $conn->prepare("SELECT username FROM Members WHERE username =:username");
+					$query->bindValue('username', $username);
+					$query->execute();
+					
+					$query2= $conn->prepare("SELECT email FROM Members WHERE email =:email");
+					$query2->bindValue('email', $email);
+					$query2->execute();
+					
+						if ($query->fetch(PDO::FETCH_ASSOC)) {
+							echo '<div id="errormsg">Username is al geregistreerd! Probeer opnieuw...</div>';
+						}
+							else if ($query2->fetch(PDO::FETCH_ASSOC)) {
+								echo '<div id="errormsg">E-mail is als geregistreerd! Probeer opnieuw...</div>';
+							}
+							else {
+						if(isset($_POST["add_btn"])){
+						$hostname='95.170.86.104';
+						$username='codymax_root';
+						$password='Qwerty6';
+
+						try {
+						$dbh = new PDO("mysql:host=$hostname;dbname=codymax_bos",$username,$password);
+
+						$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+						$sql = "INSERT INTO Members (Username, Firstname, Lastname, Email, Password)
+						VALUES ('".$_POST["username"]."','".$_POST["firstname"]."','".$_POST["lastname"]."','".$_POST["email"]."','".$_POST["password"]."')";
+						if ($dbh->query($sql)) {
+						echo '<div id="goodmsg">Nieuw lid succesvol toegevoegd</div>';
+						}
+						else{
+						echo '<div id="errormsg">Er is iets fout gegaan met registreren(DB)</div>';
+						}
+
+						$dbh = null;
+						}
+						catch(PDOException $e)
+						{
+						echo $e->getMessage();
+						}
+							
+						}
+					}
+				} else{
+					echo '<div id="errormsg">Wachtwoorden komen niet overheen! Probeer opnieuw...</div>';
+				}
+			}
+		?>
 		<div id="UsersTable">
 			<?php
 				$query = "SELECT * FROM Members";
@@ -15,6 +74,7 @@
 						<th class="field2 username2">Voornaam</th>
 						<th class="field2 username2">Achternaam</th>
 						<th class="field2 email2">E-mail</th>
+						<th class="field2 username2">Verwijder</th>	
 						</tr>';
 
 					foreach($data as $row)
@@ -25,6 +85,7 @@
 								<td>'.$row["Firstname"].'</td>
 								<td>'.$row["Lastname"].'</td>
 								<td>'.$row["Email"].'</td>
+								<td id="'.$row["MemberID"].'"><a href="#">Verwijder</a></td>
 							</tr>';
 					}
 
@@ -39,9 +100,18 @@
 			<p>Gebruiker toevoegen klik <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">hier.</a>
 			</p>
 				<div id="light" class="white_content">
-					<p>Gebruiker toevoegen</p> 
-
-					<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Sluit.</a>
+					
+					<center><h1>Gebruiker toevoegen</h1></center>
+			<form class="myform2" action="homeAdmin.php?page=Gebruikers" method="post" autocomplete="off">
+				<input name="username" type="text" class="field username" placeholder="Gebruikersnaam" required oninvalid="this.setCustomValidity('Vul een gebruikersnaam in.')" oninput="setCustomValidity('')"/><br>
+				<input name="firstname" type="text" class="field username" placeholder="Voornaam" required oninvalid="this.setCustomValidity('Vul een voornaam in.')" oninput="setCustomValidity('')"/><br>
+				<input name="lastname" type="text" class="field username" placeholder="Achternaam" required oninvalid="this.setCustomValidity('Vul een achternaam in.')" oninput="setCustomValidity('')"/><br>
+				<input name="email" type="email" class="field email" placeholder="E-mail" required oninvalid="this.setCustomValidity('Vul een E-mail in.')" oninput="setCustomValidity('')"/><br>
+				<input name="password" type="password" class="field password" placeholder="Wachtwoord" required oninvalid="this.setCustomValidity('Vul een wachtwoord in')" oninput="setCustomValidity('')"/><br>
+				<input name="cpassword" type="password" class="field password" placeholder="Bevestig wachtwoord" required oninvalid="this.setCustomValidity('Vul het wachtwoord opnieuw in.')" oninput="setCustomValidity('')"/><br>
+				<a href="javascript:void(0)" onClick="hixstory.go(0)" VALUE="Refresh" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" id="close_btn">Sluit</a>
+				<input name="add_btn" type="submit" id="add_btn" value="Toevoegen"/>
+			</form> 
 				</div>
 					<div id="fade" class="black_overlay">
 					</div>

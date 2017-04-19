@@ -31,11 +31,12 @@
 		<a href="homeAdmin.php?page=boeken">Boeken</a>
 		
 	</div>
+	<!--IF isset post/get-->
 		<?php
 			if($_GET['page'] == 'Gebruikers')
 			{
 				include 'includes/admin-main-content-members.php';
-			}else i f($_GET['page'] == 'boeken'){
+			}else if($_GET['page'] == 'boeken'){
 				include 'includes/admin-main-content-books.php';
 			}else{
 				include 'includes/admin-main-content-home.php';
@@ -46,7 +47,7 @@
 		{
 			session_destroy();
 			header('Location: index.php');
-		}
+		}  
 	?>
 </body>
 </html>

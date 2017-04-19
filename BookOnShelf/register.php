@@ -46,41 +46,34 @@
 					$query2->bindValue('email', $email);
 					$query2->execute();
 					
-						if ($query->fetch(PDO::FETCH_ASSOC)) {
-							echo '<div id="errormsg">Username is al geregistreerd! Probeer opnieuw...</div>';
-						}
-							else if ($query2->fetch(PDO::FETCH_ASSOC)) {
-								echo '<div id="errormsg">E-mail is als geregistreerd! Probeer opnieuw...</div>';
+					if ($query->fetch(PDO::FETCH_ASSOC)) {
+						echo '<div id="errormsg">Username is al geregistreerd! Probeer opnieuw...</div>';
+					} else if ($query2->fetch(PDO::FETCH_ASSOC)) {
+						echo '<div id="errormsg">E-mail is als geregistreerd! Probeer opnieuw...</div>';
+					}
+					else {
+						if (isset($_POST["submit_btn"])){
+							$hostname='95.170.86.104';
+							$username='codymax_root';
+							$password='Qwerty6';
+							try {
+								$dbh = new PDO("mysql:host=$hostname;dbname=codymax_bos",$username,$password);
+								$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+								$sql = "INSERT INTO Members (Username, Firstname, Lastname, Email, Password)
+									VALUES ('".$_POST["username"]."','".$_POST["firstname"]."','".$_POST["lastname"]."','".$_POST["email"]."','".$_POST["password"]."')";
+								if ($dbh->query($sql)) {
+									echo '<div id="goodmsg">U bent succesvol geregistreed, u kunt nu inloggen.</div>';
+								} else {
+								echo '<div id="errormsg">Er is iets fout gegaan met registreren(DB)</div>';
+								}
+							$dbh = null;
 							}
-							else {
-						if(isset($_POST["submit_btn"])){
-						$hostname='95.170.86.104';
-						$username='codymax_root';
-						$password='Qwerty6';
-
-						try {
-						$dbh = new PDO("mysql:host=$hostname;dbname=codymax_bos",$username,$password);
-
-						$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$sql = "INSERT INTO Members (Username, Firstname, Lastname, Email, Password)
-						VALUES ('".$_POST["username"]."','".$_POST["firstname"]."','".$_POST["lastname"]."','".$_POST["email"]."','".$_POST["password"]."')";
-						if ($dbh->query($sql)) {
-						echo '<div id="goodmsg">U ben succesvol geregistreed, u kunt nu inloggen.</div>';
-						}
-						else{
-						echo '<div id="errormsg">Er is iets fout gegaan met registreren(DB)</div>';
-						}
-
-						$dbh = null;
-						}
-						catch(PDOException $e)
-						{
-						echo $e->getMessage();
-						}
-							
+							catch(PDOException $e) {
+								echo $e->getMessage();
+							}
 						}
 					}
-				} else{
+				} else {
 					echo '<div id="errormsg">Wachtwoorden komen niet overheen! Probeer opnieuw...</div>';
 				}
 			}
