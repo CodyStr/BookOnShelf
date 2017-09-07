@@ -1,9 +1,9 @@
 <?php
 
-define('HOST', '95.170.86.104');
-define('USER', 'codymax_root');
-define('PASSWORD', 'Qwerty6');
-define('DATABASE', 'codymax_bos');
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASSWORD', '');
+define('DATABASE', 'bos');
 $conn = DB();
 function DB()
 {

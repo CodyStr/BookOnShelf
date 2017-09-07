@@ -53,13 +53,14 @@
 					}
 					else {
 						if (isset($_POST["submit_btn"])){
-							$hostname='95.170.86.104';
-							$username='codymax_root';
-							$password='Qwerty6';
+							$hostname='localhost';
+							$dbname = 'bos';
+							$username='root';
+							$password='';
 							try {
-								$dbh = new PDO("mysql:host=$hostname;dbname=codymax_bos",$username,$password);
+								$dbh = new PDO("mysql:host=$hostname;dbname=$dbname",$username,$password);
 								$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-								$sql = "INSERT INTO Members (Username, Firstname, Lastname, Email, Password)
+								$sql = "INSERT INTO Members (username, firstname, lastname, email, password)
 									VALUES ('".$_POST["username"]."','".$_POST["firstname"]."','".$_POST["lastname"]."','".$_POST["email"]."','".$_POST["password"]."')";
 								if ($dbh->query($sql)) {
 									echo '<div id="goodmsg">U bent succesvol geregistreed, u kunt nu inloggen.</div>';

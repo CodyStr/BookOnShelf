@@ -11,9 +11,9 @@
 					echo '<table>
 						<tr>
 						<th>ID</th>
-						<th class="field2 username2">ISBN</th>
-						<th class="field2 username2">Titel</th>
-						<th class="field2 username2">Aantal</th>
+						<th class="field2 book">ISBN</th>
+						<th class="field2 book">Titel</th>
+						<th class="field2 book">Aantal</th>
 						</tr>';
 
 					foreach($data as $row)

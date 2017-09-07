@@ -22,36 +22,30 @@
 					
 						if ($query->fetch(PDO::FETCH_ASSOC)) {
 							echo '<div id="errormsg">Username is al geregistreerd! Probeer opnieuw...</div>';
-						}
-							else if ($query2->fetch(PDO::FETCH_ASSOC)) {
+						}else if ($query2->fetch(PDO::FETCH_ASSOC)) {
 								echo '<div id="errormsg">E-mail is als geregistreerd! Probeer opnieuw...</div>';
+						}
+						else {
+							if(isset($_POST["add_btn"])){
+								$hostname='localhost';
+								$dbname='bos';
+								$username='root';
+								$password='';
+								try {
+								$dbh = new PDO("mysql:host=$hostname;dbname=$dbname",$username,$password);
+								$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+								$sql = "INSERT INTO Members (Username, Firstname, Lastname, Email, Password)
+									VALUES ('".$_POST["username"]."','".$_POST["firstname"]."','".$_POST["lastname"]."','".$_POST["email"]."','".$_POST["password"]."')";
+							if ($dbh->query($sql)) {
+								echo '<div id="goodmsg">Nieuw lid succesvol toegevoegd</div>';
+							}else {
+								echo '<div id="errormsg">Er is iets fout gegaan met registreren(DB)</div>';
 							}
-							else {
-						if(isset($_POST["add_btn"])){
-						$hostname='95.170.86.104';
-						$username='codymax_root';
-						$password='Qwerty6';
-
-						try {
-						$dbh = new PDO("mysql:host=$hostname;dbname=codymax_bos",$username,$password);
-
-						$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-						$sql = "INSERT INTO Members (Username, Firstname, Lastname, Email, Password)
-						VALUES ('".$_POST["username"]."','".$_POST["firstname"]."','".$_POST["lastname"]."','".$_POST["email"]."','".$_POST["password"]."')";
-						if ($dbh->query($sql)) {
-						echo '<div id="goodmsg">Nieuw lid succesvol toegevoegd</div>';
-						}
-						else{
-						echo '<div id="errormsg">Er is iets fout gegaan met registreren(DB)</div>';
-						}
-
 						$dbh = null;
-						}
-						catch(PDOException $e)
-						{
-						echo $e->getMessage();
-						}
-							
+							}
+							catch(PDOException $e) {
+								echo $e->getMessage();
+							}	
 						}
 					}
 				} else{
@@ -60,44 +54,55 @@
 			}
 		?>
 		<div id="UsersTable">
-			<?php
-				$query = "SELECT * FROM Members";
-				$sth = $conn->query($query);
-				if($sth->rowCount() > 0)
-				{
-					$data = $sth->fetchAll();
-
-					echo '<table>
-						<tr>
-						<th>ID</th>
-						<th class="field2 username2">Gebruikersaam</th>
-						<th class="field2 username2">Voornaam</th>
-						<th class="field2 username2">Achternaam</th>
-						<th class="field2 email2">E-mail</th>
-						<th class="field2 username2">Verwijder</th>	
-						</tr>';
-
-					foreach($data as $row)
+			<form class="members-form" method="post" autocomplete="off">
+				<?php
+					if (isset($_POST['delete_btn']))
 					{
-						echo '<tr>
-								<td>'.$row["MemberID"].'</td>
-								<td>'.$row["Username"].'</td>
-								<td>'.$row["Firstname"].'</td>
-								<td>'.$row["Lastname"].'</td>
-								<td>'.$row["Email"].'</td>
-								<td id="'.$row["MemberID"].'"><a href="#">Verwijder</a></td>
-							</tr>';
+						$MemberID = $_POST["delete_btn"];
+						$query3 = $conn->prepare("DELETE FROM Members WHERE MemberID =:MemberID");
+						$query3->bindvalue('MemberID', $MemberID);
+						$query3->execute();
+					} else {
+						
 					}
+				?>
+				<?php
+					$query = "SELECT * FROM Members";
+					$sth = $conn->query($query);
+					if($sth->rowCount() > 0)
+					{
+						$data = $sth->fetchAll();
 
-					echo '</table>';
-				}
-				else{
-					echo '<p>Er zijn geen gebruikers beschikbaar</p>';
-				}
+						echo '<table>
+							<tr>
+							<th>ID</th>
+							<th class="field2 username2">Gebruikersaam</th>
+							<th class="field2 username2">Voornaam</th>
+							<th class="field2 username2">Achternaam</th>
+							<th class="field2 email2">E-mail</th>
+							<th class="field2 cross">Verwijder</th>	
+							</tr>';
 
-			?>
+						foreach($data as $row)
+						{
+							echo '<tr>
+									<td>'.$row["MemberID"].'</td>
+									<td>'.$row["username"].'</td>
+									<td>'.$row["firstname"].'</td>
+									<td>'.$row["lastname"].'</td>
+									<td>'.$row["email"].'</td>
+									<td><input type="submit" value="' . $row['MemberID'] . '" name="delete_btn"/></td>
+								</tr>';
+						}
+						echo '</table>';
+					}
+					else{
+						echo '<p>Er zijn geen gebruikers beschikbaar</p>';
+					}
+				?>
+			</form>
 		</div>
-			<p>Gebruiker toevoegen klik <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">hier.</a>
+			<p>Gebruiker toevoegen klik <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Toevoegen</a>
 			</p>
 				<div id="light" class="white_content">
 					
@@ -109,7 +114,7 @@
 				<input name="email" type="email" class="field email" placeholder="E-mail" required oninvalid="this.setCustomValidity('Vul een E-mail in.')" oninput="setCustomValidity('')"/><br>
 				<input name="password" type="password" class="field password" placeholder="Wachtwoord" required oninvalid="this.setCustomValidity('Vul een wachtwoord in')" oninput="setCustomValidity('')"/><br>
 				<input name="cpassword" type="password" class="field password" placeholder="Bevestig wachtwoord" required oninvalid="this.setCustomValidity('Vul het wachtwoord opnieuw in.')" oninput="setCustomValidity('')"/><br>
-				<a href="javascript:void(0)" onClick="hixstory.go(0)" VALUE="Refresh" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" id="close_btn">Sluit</a>
+				<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" id="close_btn">Sluit</a>
 				<input name="add_btn" type="submit" id="add_btn" value="Toevoegen"/>
 			</form> 
 				</div>

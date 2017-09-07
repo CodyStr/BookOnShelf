@@ -48,7 +48,7 @@
 						else{
 							$_SESSION['username'] = $username;
 							$_SESSION['login'] = true;
-							header('Location: home.php?page=Home');
+							header('Location: homeMember.php?page=Home');
 						}
 					}
 					else{

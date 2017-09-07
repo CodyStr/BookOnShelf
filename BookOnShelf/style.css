@@ -263,6 +263,13 @@ input[type=text], input[type=password], input[type=email]:focus {
 	padding: 10px;
 }
 
+#errormsg {
+	border: 2px solid red;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+}
+
 #sideMenu {
 	background-color: red;
 	margin-top: 100px;
@@ -371,6 +378,14 @@ input[type=text], input[type=password], input[type=email]:focus {
 
 .email2 {
 	background: url(images/mail-32.png) no-repeat #fff 8px;
+}
+
+.book {
+	background: url(images/book-32.png) no-repeat #fff 8px;
+}
+
+.cross {
+	background: url(images/x-mark-32.png) no-repeat #fff 8px;
 }
 
 .field2 {
